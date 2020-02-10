@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	var vklad=+prompt("введите сумму вклада:");
+	var proc=+prompt("введите процент, который будет начисляться ежегодно:");
+	if(!isNaN(vklad)&& !isNaN(proc)&& vklad>0 && proc>0){
+		var year=5;
+		for(var i=0;i<year;i++){
+			var yearIncr=vklad*proc/100;
+			var vkladPrev=vklad;
+			vklad=vklad+yearIncr;
+			document.write("<br>Год "+i+" вклад "+vkladPrev+" проценты "+yearIncr.toFixed(2));
+
+		}
+	}
+	else{
+	alert("Ввели не цифру или значение меньше 0");
+	}
+
+</script>
