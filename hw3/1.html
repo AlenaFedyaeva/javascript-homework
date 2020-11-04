@@ -1,0 +1,77 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	function createArray(arrLen) {
+		var arr=[];
+		for(var i=0;i<arrLen;i++){
+			arr.push(i+1);
+		}
+		
+		return arr;
+	}
+	function summArrayElements(arr){
+		var summ=0;
+		for(let elem of arr)
+			summ+=elem;
+		
+		return summ;
+	}
+	function findMaxValue(arr){
+		var maxVal=0;
+		if(arr.length>0)
+			maxVal=arr[0];
+		else 
+			return undefined;
+		
+		for(let elem of arr)
+		{
+			if(maxVal<elem)
+				maxVal=elem;
+		}
+		
+		return maxVal;
+	}
+	function findMinValue(arr){
+		var minVal=0;
+		if(arr.length>0)
+			minVal=arr[0];
+		else 
+			return undefined;
+
+		for(let elem of arr){
+			if(minVal>elem)
+				minVal=elem;
+		}
+		
+		return minVal;
+	}
+	function findEvenNumbers(arr){
+		var arrRez=[];
+		for(let elem of arr){
+			if(elem%2==0)
+				arrRez.push(elem);
+		}
+		
+		return arrRez;
+	}
+	//a
+	var n=+prompt("в качестве параметра фунцкции введите число n");
+	var arr=createArray(n) ;
+	//b
+	var arrSumm=summArrayElements(arr);
+	//c
+	var arrMax=findMaxValue(arr);
+	//d
+	 var arrMin=findMinValue(arr);
+	//f
+	var arrEven=findEvenNumbers(arr);
+	alert("Результат работы программы: "+
+		"\n массив: "+arr+
+		"\n сумма элементов массива: "+arrSumm+
+		"\n максимальный элемент: "+arrMax+
+		"\n минимальный элемент: "+arrMin+
+		"\n четные значения: "+arrEven);
+
+		
+
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+		
+		var alp=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+		var num=["1","2","3","4","5","6","7","8","9","0"];
+		var sym=["№","%",":","?","*","_","+",":"];
+
+		var gameOn=true;
+		var answer=parseInt(Math.random()*100);
+		var players=["Игрок 1", "Игрок 2"];
+		var score=[0,0]
+		var whoNext=0;
+		var strRez=" Не угадали! "; 
+		function readInt(){
+			var number=document.getElementById("userAnswer").value;
+			return parseInt(number);
+		}
+		function writePass(text){
+			document.getElementById("infoRez").innerHTML=text;
+			
+		}
+				
+		function getRandomNumber(maxVal){
+			return  Math.round(Math.random()*maxVal);
+		}
+		function generate(){
+			var passLen=readInt();
+			var pass="";
+			for(var i=0;i<passLen;i++){
+				var genWho=getRandomNumber(3);
+				var arr=[];
+				if(genWho==1)
+					arr=alp;
+				else if(genWho==2)
+					arr=num;
+				else 
+					arr=sym;
+
+				var numInArr=getRandomNumber(arr.length-1);
+				pass=pass+arr[numInArr];
+			}
+			writePass(pass);
+
+		}
+
+	</script>
+</head>
+<body>
+
+	<div class="content"> 
+		<div class="header">
+			<a href="index.html"> Главная </a>
+			<a href="puzzle.html"> Загадки </a>
+			<a href="guess.html"> Угадайка </a>
+			<a href="guess_multi.html"> Угадайка мультиплеер</a>
+			<a href="gen_passwd.html"> Генератор паролей </a>
+		</div>
+
+		<div class="contentWrap">
+			<div class="content">
+				<div class="center">
+					<h1> Генератор паролей</h1>
+					<div class="box">
+					
+						<p id="info">Введите длину нужного пароля</p>
+						
+						<input type="text" id="userAnswer">
+						<br>
+						<a href="#" onClick="generate();" id="button">Начать</a>	
+						<br><br><br>
+						<p id="infoRez"></p>
+	
+					 </div>	
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="footer">
+	Copyright &copy; Alena Fedyaeva 
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+
+	function game() {
+  		var answer=parseInt(Math.random()*100);
+		var userAnswer=+prompt("Угадайте число от 0 до 100");
+		var maxTryCount=2;
+
+		document.write("Ваш ответ: "+userAnswer+("<br>"));
+		var tryCount=0;
+		for (tryCount = 1; tryCount<maxTryCount; tryCount++) {
+			if(userAnswer==answer){
+				document.write("Поздравляю, вы угадали! ");
+				break;
+			}
+			else if (userAnswer>answer) {
+				document.write("Вы ввели слишком большое число. ");
+			}
+			else if (userAnswer<answer) {
+				document.write("Вы ввели слишком маленькое число. ");
+			}
+			document.write("У вас осталось "+(maxTryCount-tryCount)+" попыток <br>");
+		
+			userAnswer=+prompt("Попробуйте еще раз. Введите число от 1 до 100 ");
+			document.write("Ваш ответ: "+userAnswer+("<br>"));
+		}
+		document.write("Правильный ответ: "+answer);
+		if(tryCount==maxTryCount)
+			alert("Вы проиграли");
+		
+	}	
+	function checkContinue(){
+		var answerContunue="Да";
+		var answerRet=prompt("Вы хотите продолжить игру",answerContunue);
+		if(answerContunue==answerRet){
+			return true;
+		}
+		else return false;
+	}
+
+	var score=[0,0];
+	var players=["",""];
+	players[0]=prompt("Введите имя первого пользователя","1");
+	players[1]=prompt("Введите имя второго пользователя","2");
+	var gameOn=true;
+	while(gameOn){
+		for(let player of players){
+			document.write("<br>Играет пользователь "+ player+"<br>");
+			game();
+			gameOn=checkContinue();
+		}
+	}
+
+
+	
+
+
+</script>

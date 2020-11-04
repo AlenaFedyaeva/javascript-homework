@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Личный сайт студента GeekBrains</title>
+	<link rel="stylesheet" href="style.css"> 
+	<script type="text/javascript">
+		
+		var gameOn=true;
+		var answer=parseInt(Math.random()*100);
+		var players=["Игрок 1", "Игрок 2"];
+		var score=[0,0]
+		var whoNext=0;
+		var strRez=" Не угадали! "; 
+		function readInt(){
+			var number=document.getElementById("userAnswer").value;
+			return parseInt(number);
+		}
+		function writeInfo(text){
+			var ii=document.getElementById("info")
+			document.getElementById("info").innerHTML=text;
+			
+		}
+		function writeScore(text){
+			document.getElementById("infoScore").innerHTML=text;
+		}
+		function writeUser(text){
+			document.getElementById("infoUser").innerHTML=text;
+		}
+		function hide(id){
+			document.getElementById(id).style.display="none";
+		}
+
+		
+		function printScore(){
+			var str="Счет игры: ";
+			for(let i=0;i< players.length;i++){
+				str=str +"<br>"+players[i]+"="+score[i];
+			}
+			writeScore(str);
+		}
+		function endGame(){
+			writeInfo("Правильный ответ: "+answer+strRez);
+			printScore();
+			hide("button");
+			hide("btn_end")
+			hide("userAnswer");
+			hide("infoUser");
+		}
+	
+		function guess(){
+			document.getElementById("button").innerHTML="Продолжить";
+			
+			var userAnswer=readInt();
+			//game(a);
+
+			if(userAnswer==answer){
+				score[whoNext]=score[whoNext]+1;
+				strRez=players[whoNext]+" Поздравляем! Вы угадали! "; 
+				endGame();
+			}
+			else if (userAnswer>answer) {
+				writeInfo(players[whoNext]+": Вы ввели слишком большое число. ");
+			}
+			else if (userAnswer<answer) {
+				writeInfo(players[whoNext]+": Вы ввели слишком маленькое число. ");
+			}
+			if(whoNext==0)
+				whoNext=1;
+			
+			else
+				whoNext=0;
+			writeUser("Играет игрок "+players[whoNext]+". Введите число ");
+			printScore();
+		}
+
+		
+
+	</script>
+</head>
+<body>
+
+	<div class="content"> 
+		<div class="header">
+			<a href="index.html"> Главная </a>
+			<a href="puzzle.html"> Загадки </a>
+			<a href="guess.html"> Угадайка </a>
+			<a href="guess_multi.html"> Угадайка мультиплеер</a>
+			<a href="gen_passwd.html"> Генератор паролей </a>
+		</div>
+
+		<div class="contentWrap">
+			<div class="content">
+				<div class="center">
+					<h1> Игра угадайка для двух пользователей</h1>
+					<div class="box">
+					
+						<p id="info">Угадайте число от 0 до 100</p>
+						
+						<p id="infoUser">Играет игрок Игрок 1. Введите число </p>
+						<input type="text" id="userAnswer">
+						<br>
+						<a href="#" onClick="guess();" id="button">Начать</a>	
+						<a href="#" onClick="endGame();" id="btn_end">Завершить игру</a>	
+						<br><br><br>
+						<p id="infoScore"></p>
+	
+					 </div>	
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="footer">
+	Copyright &copy; Alena Fedyaeva 
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+
+	function showMessage() {
+  		alert( 'Всем привет!' );
+	}
+	showMessage() ;
+
+	var score=[0,0];
+	var players=["",""];
+
+
+	var answer=parseInt(Math.random()*100);
+	var userAnswer=+prompt("Угадайте число от 0 до 100");
+	var maxTryCount=2;
+	document.write("Ваш ответ: "+userAnswer+("<br>"));
+	for (var tryCount = 1; tryCount<maxTryCount; tryCount++) {
+		if(userAnswer==answer){
+			document.write("Поздравляю, вы угадали! ");
+			break;
+		}
+		else if (userAnswer>answer) {
+			document.write("Вы ввели слишком большое число. ");
+		}
+		else if (userAnswer<answer) {
+			document.write("Вы ввели слишком маленькое число. ");
+		}
+		document.write("У вас осталось "+(maxTryCount-tryCount)+" попыток <br>");
+		
+		userAnswer=+prompt("Попробуйте еще раз. Введите число от 1 до 100 ");
+		document.write("Ваш ответ: "+userAnswer+("<br>"));
+	}
+	if(tryCount>maxTryCount)
+		alert("Вы проиграли");
+	document.write("Правильный ответ: "+answer);
+
+
+</script>
